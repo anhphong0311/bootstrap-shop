@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop của tôi</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        .store-info-card {
+            border: 1px solid #e5e7eb;
+        }
+        .cart-badge {
+            font-size: 0.9rem;
+            vertical-align: top;
+        }
+        .product-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+        .category-panel {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .category-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .category-item {
+            padding: 1rem 1.2rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.9rem;
+            background: #f8fafc;
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+        }
+        .category-item:hover {
+            transform: translateY(-2px);
+            border-color: #0d6efd;
+            background-color: #f1f5ff;
+        }
+        .category-item strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+        .category-item span {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        .hero-heading {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.9rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+        .hero-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.92);
+            margin-top: 0.75rem;
+        }
+        .hero-spotlight {
+            background: linear-gradient(135deg, rgba(9,30,66,0.28) 0%, rgba(15,46,94,0.28) 100%), url('images/ha.png') right center/cover no-repeat;
+            background-position: right center;
+            background-size: cover;
+            position: relative;
+            border-radius: 1.75rem;
+            overflow: hidden;
+            color: #fff;
+            min-height: 720px;
+            width: 100%;
+            max-width: 100%;
+        }
+        .hero-spotlight::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.06);
+        }
+        .hero-spotlight .row {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-left {
+            padding: 4rem 2.5rem;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 1.5rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.75rem, 4vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            line-height: 0.95;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        .hero-caption {
+            max-width: 520px;
+            color: rgba(255,255,255,0.88);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .hero-stats-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(14px);
+            border-radius: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            max-width: 420px;
+            margin-top: 2rem;
+        }
+        .hero-stats-title {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,0.12);
+            border-radius: 1rem;
+            padding: 0.85rem 0.95rem;
+            text-align: center;
+        }
+        .hero-stat-value {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.78);
+            text-transform: uppercase;
+            margin-top: 0.35rem;
+            letter-spacing: 0.1em;
+        }
+        .hero-cta {
+            margin-top: 1.5rem;
+        }
+        .hero-cta .btn {
+            min-width: 190px;
+        }
+        .collection-section {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .collection-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .collection-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+        }
+        .collection-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .collection-card-body {
+            padding: 1.5rem;
+        }
+        .collection-card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.65rem;
+        }
+        .collection-card-text {
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        .collection-card-link {
+            font-weight: 600;
+        }
+        .middle-banner {
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+            max-height: 260px;
+        }
+        .middle-banner img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .middle-banner {
+                max-height: 200px;
+            }
+            .middle-banner img {
+                height: 200px;
+            }
+        }
+        .trend-section {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        .trend-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.25rem;
+        }
+        .trend-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #ffffff;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .trend-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .trend-card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .trend-card-body {
+            padding: 1.4rem;
+        }
+        .trend-card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .trend-card-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .trend-card-text {
+            color: #495057;
+            line-height: 1.7;
+            margin-bottom: 1.1rem;
+        }
+        .trend-card-action {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 700;
+            color: #0d6efd;
+            text-decoration: none;
+        }
+        .trend-card-action:hover {
+            text-decoration: underline;
+        }
+        .viewed-section {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+        .viewed-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .viewed-empty {
+            padding: 2.5rem 1.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            text-align: center;
+            color: #6c757d;
+            background: #ffffff;
+        }
+        .coolclub-banner {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 1.75rem;
+            background: #f5f7fb;
+            box-shadow: 0 16px 42px rgba(15, 23, 42, 0.08);
+        }
+        .coolclub-title {
+            font-size: clamp(1.85rem, 2.2vw, 2.35rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+        }
+        .coolclub-highlight {
+            color: #1c4fff;
+        }
+        .coolclub-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .coolclub-card {
+            border-radius: 1rem;
+            background: #2935d9;
+            color: #fff;
+            min-height: 160px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .coolclub-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+        .coolclub-card-icon {
+            font-size: 1.75rem;
+            opacity: 0.9;
+        }
+        .coolclub-right {
+            border-left: 1px solid rgba(15,23,42,0.12);
+            padding-left: 1.75rem;
+        }
+        .coolclub-subtitle {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        .coolclub-actions {
+            margin-top: 1.5rem;
+        }
+        .coolclub-button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0.95rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+        .coolclub-button:hover {
+            background: #1a1a1a;
+        }
+        .coolclub-activity {
+            font-size: 0.95rem;
+            color: #3c4257;
+            line-height: 1.7;
+        }
+        .coolclub-activity strong {
+            color: #161b2e;
+        }
+        @media (max-width: 991.98px) {
+            .coolclub-banner {
+                padding: 1.5rem;
+            }
+            .coolclub-row {
+                flex-direction: column;
+            }
+            .coolclub-right {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 1.75rem;
+            }
+        }
+        .marquee-bar {
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            border-radius: 0 0 0.75rem 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding: 0.8rem 0;
+            animation: marquee 18s linear infinite;
+        }
+        .marquee-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            background: linear-gradient(90deg, rgba(0,0,0,1), rgba(0,0,0,0));
+        }
+        .marquee-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 80px;
+            background: linear-gradient(270deg, rgba(0,0,0,1), rgba(0,0,0,0));
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            min-height: 260px;
+            aspect-ratio: 4 / 3;
+            background-color: #f5f6f8;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .product-image:hover img {
+            transform: scale(1.05);
+        }
+        .product-actions {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .product-image:hover .product-actions {
+            opacity: 1;
+        }
+        .product-action-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #333;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .product-action-btn:hover {
+            background: #ffffff;
+            transform: scale(1.05);
+        }
+        .product-variants {
+            display: flex;
+            gap: 0.35rem;
+            margin-bottom: 0.75rem;
+        }
+        .product-variant-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #adb5bd;
+        }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #d63384;
+        }
+        .product-card > .p-3 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .footer-section {
+            background: #041a44;
+        }
+        .footer-title {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .footer-text {
+            margin-bottom: 0.6rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .footer-form .form-control {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+        }
+        .footer-form .form-control::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        .footer-form .btn-primary {
+            background: #ff4d6d;
+            border: none;
+        }
+        .footer-social .social-icon {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .footer-list {
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .footer-list li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-list a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        .footer-list a:hover {
+            color: #ffffff;
+        }
+        .footer-store {
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+        .footer-link {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .payment-list {
+            align-items: center;
+        }
+        .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 1rem;
+            border-radius: 0.85rem;
+            background: rgba(255,255,255,0.12);
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">🛒 My Shop</a>
+    </div>
+</nav>
+
+<!-- MARQUEE -->
+<div class="container mt-2">
+    <div class="marquee-bar">
+        <div class="marquee-content">
+            Chào mừng bạn đến với TAP Fashion — Miễn phí giao hàng toàn quốc | Đổi trả trong 30 ngày | Ưu đãi giảm giá 20% cho đơn đầu tiên
+        </div>
+    </div>
+</div>
+
+<!-- BANNER -->
+<div class="container-fluid px-0 mt-4">
+    <section class="hero-spotlight">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-left">
+                    <div class="hero-eyebrow">Xu hướng thời trang</div>
+                    <h1 class="hero-title">TAPFASHION®</h1>
+                    <p class="hero-caption">Chính thức ra mắt vào tháng 8/2016, TAP® đã khẳng định dấu ấn riêng trên thị trường streetwear Việt Nam bằng thiết kế đậm chất cá tính đường phố.</p>
+                    <div class="hero-stats-card">
+                        <div class="hero-stats-title">Thống kê nhanh</div>
+                        <div class="hero-stats-grid">
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">229</div>
+                                <div class="hero-stat-label">Sản phẩm</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">4.9/5</div>
+                                <div class="hero-stat-label">Đánh giá</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-value">6 năm</div>
+                                <div class="hero-stat-label">Tham gia</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#" class="btn btn-light btn-lg text-dark">Theo dõi</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <!-- giữ hình nền từ CSS -->
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- BỘ SƯU TẬP THEO MÙA -->
+<div class="container collection-section">
+    <div class="text-center mb-4">
+        <h2>Bộ sưu tập theo mùa</h2>
+        <p class="text-muted">Khám phá phong cách Hạ, Thu và Đông từ TAP Fashion.</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="collection-card shadow-sm">
+                <img src="images/ha.png" alt="Bộ sưu tập Hạ Vibes 2026">
+                <div class="collection-card-body">
+                    <div class="collection-card-title">Hạ Vibes 2026</div>
+                    <p class="collection-card-text">Trang phục nhẹ nhàng, thoáng mát cho những ngày nắng.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm collection-card-link">Xem bộ sưu tập Hạ</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="collection-card shadow-sm">
+                <img src="images/thu.jpg" alt="Bộ sưu tập Thu Light Touch">
+                <div class="collection-card-body">
+                    <div class="collection-card-title">Thu Light Touch </div>
+                    <p class="collection-card-text">Phong cách ấm áp, thanh lịch cho mùa chuyển gió.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm collection-card-link">Xem bộ sưu tập Thu</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="collection-card shadow-sm">
+                <img src="images/dong.jpg" alt="Bộ sưu tập Đông Warm Elegance">
+                <div class="collection-card-body">
+                    <div class="collection-card-title">Đông Warm Elegance</div>
+                    <p class="collection-card-text">Đậm phong cách, ấm áp và sang trọng cho những ngày lạnh.</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm collection-card-link">Xem bộ sưu tập Đông</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SẢN PHẨM -->
+<main class="container my-5">
+    <div class="category-panel">
+        <div class="category-title">Phân loại sản phẩm</div>
+        <div class="row g-3">
+            <div class="col-sm-6 col-lg-3">
+                <div class="category-item">
+                    <strong>Áo Nam</strong>
+                    <span>Áo Phông • Polo • Tanktop • Sơ Mi</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="category-item">
+                    <strong>Quần Nam</strong>
+                    <span>Jeans • Kaki • Short • Jogger</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="category-item">
+                    <strong>Phụ kiện</strong>
+                    <span>Túi xách • Nón • Thắt lưng • Kính</span>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="category-item">
+                    <strong>Giày</strong>
+                    <span>Thể thao • Sandal • Sneaker • Da</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="middle-banner">
+        <img src="images/PHÔNG.png" alt="Ảnh phông thời trang">
+    </div>
+
+    <h2 class="mb-4">Sản phẩm nổi bật</h2>
+
+    <div class="row g-4">
+
+        <!-- SP 1 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/ancuoi.png" alt="Áo thun thời trang">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Áo thun thời trang</div>
+                    <div class="product-price">250.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 2 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/giay.webp" alt="Giày thể thao">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Giày thể thao</div>
+                    <div class="product-price">590.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 3 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/tui.webp" alt="Túi xách nữ">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Túi xách nữ</div>
+                    <div class="product-price">320.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 4 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/kínhmat.webp" alt="Kính mắt thời trang">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Kính mắt thời trang</div>
+                    <div class="product-price">180.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 5 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/tuinam.webp" alt="Túi xách nam">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Túi xách nam</div>
+                    <div class="product-price">420.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 6 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/aogio.png" alt="Áo gió nhẹ">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Áo gió nhẹ</div>
+                    <div class="product-price">350.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 7 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/quannam.webp" alt="Quần nam">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Quần nam</div>
+                    <div class="product-price">390.000đ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SP 8 -->
+        <div class="col-sm-6 col-lg-3">
+            <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <div class="product-image">
+                    <img src="images/quầnnu.webp" alt="Quần nữ">
+                    <div class="product-actions">
+                        <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
+                        <button class="product-action-btn" title="Xem nhanh">👁️</button>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="product-variants">
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                        <span class="product-variant-dot"></span>
+                    </div>
+                    <div class="product-title">Quần nữ</div>
+                    <div class="product-price">310.000đ</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- XU HƯỚNG THỜI TRANG -->
+<div class="container trend-section">
+    <div class="text-center">
+        <h2 class="trend-heading">Xu hướng thời trang</h2>
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+            <div class="trend-card">
+                <img src="images/ha.png" alt="Hạ Vibes" class="trend-card-img">
+                <div class="trend-card-body">
+                    <div class="trend-card-title">HẠ VIBES | SUMMER ’26 COLLECTION</div>
+                    <span class="trend-card-date">03/04/2026</span>
+                    <p class="trend-card-text">Chào đón mùa Hè năm nay, TAP giới thiệu bộ sưu tập mới với áo cuban shirt, áo polo nam, và phong cách beachwear nhẹ nhàng.</p>
+                    <a href="#" class="trend-card-action">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="trend-card">
+                <img src="images/thu.jpg" alt="Light Touch" class="trend-card-img">
+                <div class="trend-card-body">
+                    <div class="trend-card-title">LIGHT TOUCH | NEW SS’26 COLLECTION</div>
+                    <span class="trend-card-date">12/03/2026</span>
+                    <p class="trend-card-text">Phong cách tối giản, thoải mái với chất liệu mềm mịn và kiểu dáng thanh lịch, cho những ngày chuyển mùa.</p>
+                    <a href="#" class="trend-card-action">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="trend-card">
+                <img src="images/phoido.avif" alt="Phối đồ mùa hè" class="trend-card-img">
+                <div class="trend-card-body">
+                    <div class="trend-card-title">101 cách phối đồ mùa hè nam</div>
+                    <span class="trend-card-date">19/06/2025</span>
+                    <p class="trend-card-text">Gợi ý mix đồ mùa hè lịch lãm với polo, áo phông, tanktop và quần short thoáng mát.</p>
+                    <a href="#" class="trend-card-action">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="trend-card">
+                <img src="images/ancuoi.png" alt="Phối đồ đi đám cưới" class="trend-card-img">
+                <div class="trend-card-body">
+                    <div class="trend-card-title">101 cách phối đồ đi đám cưới</div>
+                    <span class="trend-card-date">12/05/2025</span>
+                    <p class="trend-card-text">Lựa chọn trang phục đám cưới cho nam: lịch lãm, sang trọng và vẫn giữ phong thái thoải mái.</p>
+                    <a href="#" class="trend-card-action">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container viewed-section">
+    <div class="viewed-title">Sản phẩm bạn đã xem</div>
+    <div class="viewed-empty">Không có sản phẩm nào</div>
+
+    <div class="coolclub-banner mt-4">
+        <div class="row align-items-start coolclub-row gy-4">
+            <div class="col-lg-7">
+                <div class="coolclub-title">Đặc quyền dành cho <span class="coolclub-highlight">513.568</span> thành viên <strong>TAPCLUB</strong></div>
+                <div class="coolclub-cards">
+                    <div class="coolclub-card">
+                        <div>
+                            <div class="coolclub-card-title">Mời bạn bè hoàn tiền 10% TAPCash</div>
+                        </div>
+                        <div class="coolclub-card-icon">🔍</div>
+                    </div>
+                    <div class="coolclub-card">
+                        <div>
+                            <div class="coolclub-card-title">Hoàn tiền đến 7%</div>
+                        </div>
+                        <div class="coolclub-card-icon">👑</div>
+                    </div>
+                    <div class="coolclub-card">
+                        <div>
+                            <div class="coolclub-card-title">Quà tặng sinh nhật & dịp đặc biệt</div>
+                        </div>
+                        <div class="coolclub-card-icon">🎁</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 coolclub-right">
+                <div class="coolclub-title">Hoạt động gần đây</div>
+                <div class="coolclub-activity">
+                    <p><strong>Phạm Anh Tuấn</strong> vừa được cộng <strong>7.000 TAPCash</strong> từ ĐH #3xxx380</p>
+                    <p><strong>Hoàng Trần</strong> vừa được cộng <strong>8.000 TAPCash</strong> từ ĐH #3xxx320</p>
+                    <p><strong>Ngsontrung98</strong> vừa được cộng <strong>6.000 TAPCash</strong></p>
+                </div>
+                <div class="coolclub-actions">
+                    <button class="coolclub-button">Gia nhập TAPCLUB ngay →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title mb-3">My Shop</h5>
+                    <p class="footer-text mb-2">Tổng đài CSKH: <strong>02873066060</strong></p>
+                    <p class="footer-text mb-3">Email: <strong>cskh@myshop.com</strong></p>
+                    <p class="footer-text mb-2 fw-bold">Đăng ký nhận tin</p>
+                    <p class="footer-text text-muted">Hãy là người đầu tiên nhận khuyến mãi lớn!</p>
+                    <form class="footer-form d-flex gap-2 mt-2" action="#" method="get">
+                        <input type="email" class="form-control rounded-pill" placeholder="Nhập địa chỉ email">
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">Đăng ký</button>
+                    </form>
+                    <div class="footer-social d-flex gap-2 mt-3">
+                        <span class="social-icon">F</span>
+                        <span class="social-icon">Z</span>
+                        <span class="social-icon">I</span>
+                        <span class="social-icon">Y</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title mb-3">Hỗ trợ khách hàng</h5>
+                    <ul class="footer-list list-unstyled">
+                        <li><a href="#">Chính sách đổi hàng và bảo hành</a></li>
+                        <li><a href="#">Chính sách Membership</a></li>
+                        <li><a href="#">Chính sách ưu đãi sinh nhật</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Chính sách giao hàng</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title mb-3">Hệ thống cửa hàng</h5>
+                    <p class="footer-store mb-3"><strong>Hồ Chí Minh</strong> (13 CH) New<br>Tầng 1 Aeon Mall Bình Tân, 1 Đường Số 17A, Bình Trị Đông B, Bình Tân</p>
+                    <p class="footer-store mb-3"><strong>Hà Nội</strong><br>Tầng 2 Aeon Mall Hà Đông, Dương Nội, Hà Đông</p>
+                    <p class="footer-store mb-0"><strong>Đồng Nai</strong><br>1357 Phạm Văn Thuận, Phường Biên Hòa, Đồng Nai</p>
+                    <a href="#" class="footer-link mt-3 d-inline-block">Xem tất cả cửa hàng</a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title mb-3">Phương thức thanh toán</h5>
+                    <div class="payment-list d-flex flex-wrap gap-2 mb-4">
+                        <span class="payment-badge">momo</span>
+                        <span class="payment-badge">VNPAY</span>
+                        <span class="payment-badge">COD</span>
+                    </div>
+                    <div class="trust-badges d-flex flex-column gap-2">
+                        <span class="trust-badge">Đã thông báo Bộ Công Thương</span>
+                        <span class="trust-badge">DMCA Protected</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom mt-4 pt-4 border-top border-secondary opacity-75 text-center">
+                © 2026 My Shop - Thiết kế bằng Bootstrap
+            </div>
+        </div>
+    </footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
