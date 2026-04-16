@@ -598,13 +598,18 @@
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- navbar: thanh điều hướng Bootstrap
+         navbar-expand-lg: mở rộng menu từ kích thước màn hình lớn trở lên
+         navbar-dark bg-dark: nền tối và chữ sáng cho navbar -->
     <div class="container">
+        <!-- container: căn lề và giới hạn chiều rộng nội dung -->
         <a class="navbar-brand" href="#">🛒 My Shop</a>
     </div>
 </nav>
 
 <!-- MARQUEE -->
 <div class="container mt-2">
+    <!-- mt-2: margin-top nhỏ để tách phần marquee với navbar -->
     <div class="marquee-bar">
         <div class="marquee-content">
             Chào mừng bạn đến với TAP Fashion — Miễn phí giao hàng toàn quốc | Đổi trả trong 30 ngày | Ưu đãi giảm giá 20% cho đơn đầu tiên
@@ -614,13 +619,17 @@
 
 <!-- BANNER -->
 <div class="container-fluid px-0 mt-4">
+    <!-- container-fluid: chiều rộng full page, không có padding ngang vì px-0 -->
+    <!-- hero-spotlight: phần banner chính, dùng background ảnh và hiệu ứng màu -->
     <section class="hero-spotlight">
         <div class="row g-0 align-items-center">
+            <!-- row: lưới Bootstrap cho hàng; g-0: không gian giữa cột bằng 0 -->
             <div class="col-lg-6">
+                <!-- col-lg-6: cột chiếm 6/12 trên màn hình lớn -->
                 <div class="hero-left">
                     <div class="hero-eyebrow">Xu hướng thời trang</div>
                     <h1 class="hero-title">TAPFASHION®</h1>
-                    <p class="hero-caption">Chính thức ra mắt vào tháng 8/2016, TAP® đã khẳng định dấu ấn riêng trên thị trường streetwear Việt Nam bằng thiết kế đậm chất cá tính đường phố.</p>
+                    <p class="hero-caption">Chính thức ra mắt vào tháng 8/2016, TAP® đã khẳng định dấu ấn riêng trên thị trường streetwear Việt Nam bằng thiết kế đậm chất thanh lịch và mộc mạc của người đàn ông trưởng thành.</p>
                     <div class="hero-stats-card">
                         <div class="hero-stats-title">Thống kê nhanh</div>
                         <div class="hero-stats-grid">
@@ -640,10 +649,12 @@
                     </div>
                     <div class="hero-cta">
                         <a href="#" class="btn btn-light btn-lg text-dark">Theo dõi</a>
+                        <!-- btn btn-light btn-lg: nút Bootstrap nền sáng, kích thước lớn -->
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
+                <!-- d-none d-lg-block: ẩn cột trên thiết bị nhỏ, chỉ hiển thị từ kích thước lớn trở lên -->
                 <!-- giữ hình nền từ CSS -->
             </div>
         </div>
@@ -652,18 +663,24 @@
 
 <!-- BỘ SƯU TẬP THEO MÙA -->
 <div class="container collection-section">
+    <!-- container: nội dung căn giữa trong lưới Bootstrap -->
     <div class="text-center mb-4">
+        <!-- text-center: chữ canh giữa; mb-4: margin-bottom để tách phần -->
         <h2>Bộ sưu tập theo mùa</h2>
         <p class="text-muted">Khám phá phong cách Hạ, Thu và Đông từ TAP Fashion.</p>
     </div>
     <div class="row g-4">
+        <!-- row g-4: hàng Bootstrap, khoảng cách cột vừa phải -->
         <div class="col-md-4">
+            <!-- col-md-4: cột chiếm 4/12 từ thiết bị trung bình trở lên -->
             <div class="collection-card shadow-sm">
+                <!-- shadow-sm: bóng nhẹ cho thẻ cấp -->
                 <img src="images/ha.png" alt="Bộ sưu tập Hạ Vibes 2026">
                 <div class="collection-card-body">
                     <div class="collection-card-title">Hạ Vibes 2026</div>
                     <p class="collection-card-text">Trang phục nhẹ nhàng, thoáng mát cho những ngày nắng.</p>
                     <a href="#" class="btn btn-outline-primary btn-sm collection-card-link">Xem bộ sưu tập Hạ</a>
+                    <!-- btn btn-outline-primary btn-sm: nút viền xanh Bootstrap, kích thước nhỏ -->
                 </div>
             </div>
         </div>
@@ -692,10 +709,13 @@
 
 <!-- SẢN PHẨM -->
 <main class="container my-5">
+    <!-- main: nội dung chính của trang; container: căn giữa nội dung; my-5: margin dọc lớn -->
     <div class="category-panel">
+    <!-- category-panel: vùng chứa phân loại sản phẩm với nền và viền nhẹ -->
         <div class="category-title">Phân loại sản phẩm</div>
         <div class="row g-3">
             <div class="col-sm-6 col-lg-3">
+                <!-- col-sm-6: 2 cột trên điện thoại nhỏ; col-lg-3: 4 cột trên màn lớn -->
                 <div class="category-item">
                     <strong>Áo Nam</strong>
                     <span>Áo Phông • Polo • Tanktop • Sơ Mi</span>
@@ -723,6 +743,7 @@
     </div>
 
     <div class="middle-banner">
+        <!-- middle-banner: banner ngang giữa trang để dẫn mắt người dùng và làm điểm nhấn -->
         <img src="images/PHÔNG.png" alt="Ảnh phông thời trang">
     </div>
 
@@ -732,15 +753,20 @@
 
         <!-- SP 1 -->
         <div class="col-sm-6 col-lg-3">
+            <!-- col-sm-6: chiếm 1/2 hàng trên điện thoại nhỏ; col-lg-3: chiếm 1/4 hàng trên màn lớn -->
             <div class="product-card bg-white rounded shadow-sm overflow-hidden">
+                <!-- bg-white: nền trắng; rounded: bo góc; shadow-sm: bóng nhỏ; overflow-hidden: ẩn phần thừa -->
                 <div class="product-image">
+                    <!-- product-image: vùng chứa ảnh sản phẩm, giữ tỉ lệ và hiệu ứng hover -->
                     <img src="images/ancuoi.png" alt="Áo thun thời trang">
                     <div class="product-actions">
+                    <!-- product-actions: hiển thị nút khi hover lên ảnh -->
                         <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
                         <button class="product-action-btn" title="Xem nhanh">👁️</button>
                     </div>
                 </div>
                 <div class="p-3">
+                    <!-- p-3: padding xung quanh phần nội dung -->
                     <div class="product-variants">
                         <span class="product-variant-dot"></span>
                         <span class="product-variant-dot"></span>
@@ -800,7 +826,7 @@
         <div class="col-sm-6 col-lg-3">
             <div class="product-card bg-white rounded shadow-sm overflow-hidden">
                 <div class="product-image">
-                    <img src="images/kínhmat.webp" alt="Kính mắt thời trang">
+                    <img src="images/quant-london-1.jpg" alt="Kính mắt thời trang">
                     <div class="product-actions">
                         <button class="product-action-btn" title="Thêm vào giỏ">🛒</button>
                         <button class="product-action-btn" title="Xem nhanh">👁️</button>
@@ -911,11 +937,15 @@
 
 <!-- XU HƯỚNG THỜI TRANG -->
 <div class="container trend-section">
+    <!-- trend-section: phần xu hướng; container giữ nội dung căn giữa -->
     <div class="text-center">
+        <!-- text-center: căn giữa tiêu đề -->
         <h2 class="trend-heading">Xu hướng thời trang</h2>
     </div>
     <div class="row g-4">
+        <!-- row g-4: tạo lưới dàn hàng với khoảng cách cột -->
         <div class="col-lg-3 col-md-6">
+            <!-- col-lg-3 col-md-6: 4 cột trên màn lớn, 2 cột trên màn trung bình -->
             <div class="trend-card">
                 <img src="images/ha.png" alt="Hạ Vibes" class="trend-card-img">
                 <div class="trend-card-body">
@@ -967,6 +997,7 @@
     <div class="viewed-empty">Không có sản phẩm nào</div>
 
     <div class="coolclub-banner mt-4">
+    <!-- coolclub-banner: khu vực quảng bá membership, dùng màu nền nổi bật và chia lưới -->
         <div class="row align-items-start coolclub-row gy-4">
             <div class="col-lg-7">
                 <div class="coolclub-title">Đặc quyền dành cho <span class="coolclub-highlight">513.568</span> thành viên <strong>TAPCLUB</strong></div>
@@ -1008,15 +1039,22 @@
 
     <!-- FOOTER -->
     <footer class="footer-section text-white pt-5 pb-4">
+        <!-- footer-section: nền tối; text-white: chữ trắng; pt-5 pb-4: padding dọc -->
+        <!-- footer-section: container chính của chân trang, chia 4 cột thông tin -->
         <div class="container">
+        <!-- container: giữ footer căn giữa và có margin ngang cố định -->
+            <!-- container: căn giữa nội dung footer -->
             <div class="row gy-4">
+                <!-- row gy-4: hàng với giãn cách dọc giữa các cột -->
                 <div class="col-md-6 col-lg-3">
+                    <!-- col-md-6 col-lg-3: 2 cột trên tablet, 4 cột trên desktop -->
                     <h5 class="footer-title mb-3">My Shop</h5>
                     <p class="footer-text mb-2">Tổng đài CSKH: <strong>02873066060</strong></p>
                     <p class="footer-text mb-3">Email: <strong>cskh@myshop.com</strong></p>
                     <p class="footer-text mb-2 fw-bold">Đăng ký nhận tin</p>
                     <p class="footer-text text-muted">Hãy là người đầu tiên nhận khuyến mãi lớn!</p>
                     <form class="footer-form d-flex gap-2 mt-2" action="#" method="get">
+                        <!-- d-flex gap-2: dùng flexbox để nằm hàng và tạo khoảng cách giữa input và button -->
                         <input type="email" class="form-control rounded-pill" placeholder="Nhập địa chỉ email">
                         <button type="submit" class="btn btn-primary rounded-pill px-4">Đăng ký</button>
                     </form>
